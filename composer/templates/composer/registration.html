@@ -1,0 +1,36 @@
+{% extends 'composer/base.html' %}
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="col-sm-offset-4">Create new account</h3>
+                        <br>
+                        {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include 'composer/form-template.html' %}
+                            <div class="col-sm-offset-4">{{ form.errors }}</div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-5 col-sm-12">
+                                    <button type="submit" class="btn btn-success">Sign up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

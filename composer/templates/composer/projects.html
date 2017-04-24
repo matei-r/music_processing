@@ -1,0 +1,26 @@
+{% extends 'composer/base.html' %}
+
+{% block body %}
+
+    <div class="col-md-4">
+        <a href="{% url 'composer:new_project' %}" class="btn btn-info" role="button">New project</a>
+    </div>
+
+    <div class="col-md-4">
+        <ul class="list-group">
+            {% if all_projects %}
+                {% for project in all_projects %}
+                    <a href="{% url 'composer:project' project.pk %}" style="text-decoration:none;">
+                        <li class="list-group-item">
+                            {{ project.name }}
+                            <span class="badge badge-default badge-pill">{{ project.no_of_songs }}</span>
+                        </li>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <h1 style="opacity:0.5;">No available projects</h1>
+            {% endif %}
+        </ul>
+    </div>
+
+{% endblock %}
